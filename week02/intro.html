@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FRIM Library Weekly Quiz</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .intro-container {
+            width: 90%;
+            max-width: 850px;
+            margin: 35px auto;
+            padding: 30px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .intro-hero {
+            padding: 35px 20px;
+            border-radius: 16px;
+            background: #e3ebd1;
+        }
+
+        .intro-icon {
+            font-size: 55px;
+            margin-bottom: 12px;
+        }
+
+        .intro-hero h1 {
+            margin: 10px 0;
+            color: #344b2e;
+            font-size: clamp(25px, 5vw, 38px);
+        }
+
+        .intro-hero p {
+            margin: 12px 0;
+            line-height: 1.7;
+        }
+
+        .week-label {
+            display: inline-block;
+            padding: 7px 16px;
+            margin-bottom: 12px;
+            background: #819747;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .intro-description {
+            margin: 28px 0;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .intro-features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .intro-feature {
+            padding: 20px 14px;
+            border-radius: 14px;
+            background: #eef3e6;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .intro-feature h3 {
+            margin: 8px 0;
+            color: #344b2e;
+            font-size: 17px;
+        }
+
+        .intro-feature p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .quiz-info {
+            padding: 20px;
+            margin: 25px 0;
+            background: #f5f6ee;
+            border-radius: 14px;
+        }
+
+        .quiz-info p {
+            margin: 10px 0;
+        }
+
+        .intro-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .intro-button {
+            display: inline-block;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #819747;
+            color: white;
+            text-decoration: none;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .intro-button:hover {
+            background: #6d803b;
+        }
+
+        .leaderboard-link {
+            background: #315d38;
+        }
+
+        .leaderboard-link:hover {
+            background: #24452b;
+        }
+
+        .intro-button.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .intro-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dce2d3;
+            color: #52604b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .intro-container {
+                width: 94%;
+                margin: 18px auto;
+                padding: 16px;
+            }
+
+            .intro-hero {
+                padding: 25px 14px;
+            }
+
+            .intro-features {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .intro-feature {
+                padding: 18px;
+            }
+
+            .intro-description {
+                font-size: 16px;
+            }
+
+            .intro-actions {
+                flex-direction: column;
+            }
+
+            .intro-button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="intro-container">
+
+        <!-- Welcome Section -->
+        <section class="intro-hero">
+
+            <div class="intro-icon">🌿</div>
+
+            <span class="week-label" id="week-label">
+                WEEK 02
+            </span>
+
+            <h1>FRIM LIBRARY WEEKLY QUIZ</h1>
+
+            <p>
+                Explore nature . Discover knowledge
+            </p>
+
+        </section>
+
+
+        <!-- Introduction -->
+        <section class="intro-description">
+
+            <p>
+                Welcome to the
+                <strong>FRIM Library Weekly Quiz!</strong>
+            </p>
+
+            <p>
+                Discover interesting facts about Malaysia's plants,
+                biodiversity and traditional uses through an
+                interactive learning experience inspired by
+                FRIM Library publications.
+            </p>
+
+        </section>
+
+
+        <!-- Features -->
+        <section class="intro-features">
+
+            <article class="intro-feature">
+
+                <div class="feature-icon">📚</div>
+
+                <h3>Explore & Learn</h3>
+
+                <p>
+                    Discover knowledge from FRIM Library publications
+                    and learn more about our natural environment.
+                </p>
+
+            </article>
+
+
+            <article class="intro-feature">
+
+                <div class="feature-icon">🎮</div>
+
+                <h3>Play & Discover</h3>
+
+                <p>
+                    Answer interactive questions and test what
+                    you have learned about Malaysian plants.
+                </p>
+
+            </article>
+
+
+            <article class="intro-feature">
+
+                <div class="feature-icon">🌱</div>
+
+                <h3>Celebrate Nature</h3>
+
+                <p>
+                    Build awareness of biodiversity and the
+                    importance of preserving natural resources.
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- Quiz Information -->
+        <section class="quiz-info">
+
+            <h2>Ready to Begin?</h2>
+
+            <p>📝 3 questions</p>
+
+            <p>🏆 10 marks for each correct answer</p>
+
+            <p>⭐ Maximum score: 30 marks</p>
+
+            <p>⏱️ Your completion time will be recorded.</p>
+
+        </section>
+
+
+        <!-- Action Buttons -->
+        <section class="intro-actions">
+
+            <a
+                href="../week02/index.html"
+                id="start-quiz-button"
+                class="intro-button">
+                ▶ START QUIZ
+            </a>
+
+            <a
+                href="../leaderboard.html"
+                class="intro-button leaderboard-link">
+                🏆 VIEW LEADERBOARD
+            </a>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="intro-footer">
+
+            <p>
+                Want to explore more?
+                Discover related publications through
+                <a
+                    href="https://fred.frim.gov.my/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    https://fred.frim.gov.my
+                </a>.
+            </p>
+
+            <p>
+                Learn something new today!
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script>
+        // ========================================
+        // DYNAMIC WEEK SELECTION
+        // ========================================
+
+        const params = new URLSearchParams(
+            window.location.search
+        );
+
+        const requestedWeek = params.get("week") || "01";
+
+        // Add a week here only after its quiz page is ready.
+        const availableWeeks = ["01", "02"];
+
+        const weekLabel =
+            document.getElementById("week-label");
+
+        const startQuizButton =
+            document.getElementById("start-quiz-button");
+
+        if (availableWeeks.includes(requestedWeek)) {
+
+            weekLabel.textContent =
+                `WEEK ${requestedWeek}`;
+
+            startQuizButton.href =
+                "index.html";
+
+            startQuizButton.classList.remove("disabled");
+
+            startQuizButton.setAttribute("aria-disabled", "false");
+
+        } else {
+
+            weekLabel.textContent =
+                `WEEK ${requestedWeek}`;
+
+            startQuizButton.textContent =
+                "QUIZ NOT AVAILABLE";
+
+            startQuizButton.removeAttribute("href");
+
+            startQuizButton.classList.add("disabled");
+
+            startQuizButton.setAttribute("aria-disabled", "true");
+
+        }
+    </script>
+<script src="../js/button_sound.js"></script>
+</body>
+</html>

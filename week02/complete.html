@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Weekly Quiz - W02</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <main class="quiz-container">
+
+        <!-- Header -->
+        <header class="quiz-header">
+            <h1>LIBRARY WEEKLY QUIZ</h1>
+            <p>Week 02</p>
+        </header>
+
+        <!-- Quiz Completed -->
+        <section class="result-page correct-card">
+
+            <div class="result-title">
+                🎉 QUIZ COMPLETED!
+            </div>
+
+            <!-- Completion Message -->
+            <div class="result-message">
+
+                <p>
+                    Congratulations! You have completed
+                    the <strong>FRIM Library Weekly Quiz - Week 02.</strong>
+                </p>
+
+                <p>
+                    We hope you discovered something new
+                    about sekentut, legundi and janda merana.
+                </p>
+
+            </div>
+
+            <!-- Quiz Score -->
+            <div class="info-card">
+                <h3>🏆 YOUR QUIZ SCORE</h3>
+                <p id="score-display">Calculating score...</p>
+                <p id="time-display">Calculating time...</p>
+            </div>
+
+            <!-- Player Nickname -->
+            <div class="info-card">
+                <h3>👤 GLOBAL LEADERBOARD</h3>
+
+                <label for="nickname">Enter your nickname:</label>
+
+                <input
+                    type="text"
+                    id="nickname"
+                    maxlength="20"
+                    placeholder="Enter nickname"
+                    autocomplete="nickname"
+                >
+
+                <p id="submission-message" role="status"></p>
+
+                <button
+                    type="button"
+                    id="submit-score-button"
+                    class="next-button">
+                    SUBMIT SCORE
+                </button>
+
+                <a href="../leaderboard.html" class="leaderboard-button">
+                    🏆 VIEW GLOBAL LEADERBOARD
+                </a>
+            </div>
+
+            <!-- Keep Exploring -->
+            <div class="info-card">
+
+                <h3>🌿 KEEP EXPLORING</h3>
+
+                <p>
+                    The FRIM Library provides access to information
+                    and publications related to forestry,
+                    biodiversity, plants and forest research.
+                </p>
+
+                <p>
+                    Explore more resources and discover
+                    interesting information through FReD.
+                </p>
+
+            </div>
+
+            <!-- FReD -->
+            <div class="fred-section">
+
+                <p>Want to learn more?</p>
+
+                <p>
+                    Explore FRIM's research and library resources
+                    through <strong>FReD</strong>.
+                </p>
+
+                <a
+                    href="https://fred.frim.gov.my/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="fred-button">
+                    EXPLORE ON FRED
+                </a>
+
+            </div>
+
+            <!-- Home -->
+            <section class="submit-section">
+
+                <a href="../intro.html" class="back-button">
+                    HOME
+                </a>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <script>
+        // ========================================
+        // WEEK 02 SCORE AND LEADERBOARD
+        // ========================================
+
+        const API_URL = "https://script.google.com/macros/s/AKfycbzK6Ms0EAsJMfjKjIwOlm5g_ApmVDVEaGuFbOHThF4eKvBxEcfvvqzSgwm5VGPGOC5aAw/exec";
+
+        const correctAnswers = {
+            "1": "A",
+            "2": "B",
+            "3": "C"
+        };
+
+        const storageKey = "frimQuizWeek02Answers";
+
+        let savedAnswers = {};
+
+        try {
+            savedAnswers = JSON.parse(
+                localStorage.getItem(storageKey) || "{}"
+            );
+        } catch (error) {
+            savedAnswers = {};
+        }
+
+        let score = 0;
+
+        Object.keys(correctAnswers).forEach(question => {
+            if (savedAnswers[question] === correctAnswers[question]) {
+                score += 10;
+            }
+        });
+
+        document.getElementById("score-display").textContent =
+            `${score} / 30 marks`;
+
+        // ========================================
+        // QUIZ TIMER - WEEK 02
+        // ========================================
+
+        const timerStartKey = "frimQuizWeek02StartTime";
+        const timerDurationKey = "frimQuizWeek02TimeTaken";
+
+        const startTime = Number(
+            localStorage.getItem(timerStartKey)
+        );
+
+        let timeTaken = null;
+
+        if (Number.isFinite(startTime) && startTime > 0) {
+            timeTaken = Math.max(
+                0,
+                Math.floor((Date.now() - startTime) / 1000)
+            );
+
+            localStorage.setItem(
+                timerDurationKey,
+                String(timeTaken)
+            );
+
+            const minutes = Math.floor(timeTaken / 60);
+            const seconds = timeTaken % 60;
+
+            const formattedTime =
+                `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+            document.getElementById("time-display").textContent =
+                `⏱️ Time Taken: ${formattedTime}`;
+        } else {
+            document.getElementById("time-display").textContent =
+                "⏱️ Time Taken: Not available";
+        }
+
+        // ========================================
+        // SUBMIT SCORE
+        // ========================================
+
+        const submitButton =
+            document.getElementById("submit-score-button");
+
+        const nicknameInput =
+            document.getElementById("nickname");
+
+        const message =
+            document.getElementById("submission-message");
+
+        submitButton.addEventListener("click", async () => {
+            const nickname = nicknameInput.value.trim();
+
+            if (!nickname || nickname.length > 20) {
+                message.textContent =
+                    "Please enter a nickname (1–20 characters).";
+                return;
+            }
+
+            const allQuestionsAnswered =
+                Object.keys(correctAnswers).every(question =>
+                    ["A", "B", "C", "D"].includes(
+                        savedAnswers[question]
+                    )
+                );
+
+            if (!allQuestionsAnswered) {
+                message.textContent =
+                    "Please complete all three questions first.";
+                return;
+            }
+
+            submitButton.disabled = true;
+            message.textContent = "Submitting your score...";
+
+            try {
+                await fetch(API_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify({
+                        action: "submit",
+                        nickname: nickname,
+                        week: "WEEK_02",
+                        answers: [
+                            savedAnswers["1"],
+                            savedAnswers["2"],
+                            savedAnswers["3"]
+                        ],
+                        timeTaken: timeTaken
+                    })
+                });
+
+                message.textContent =
+                    "Submission sent. Please check the leaderboard shortly.";
+
+            } catch (error) {
+                message.textContent =
+                    "Could not send the score. Please try again.";
+
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+
+    <script src="../js/button_sound.js"></script>
+
+</body>
+</html>
