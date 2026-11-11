@@ -283,6 +283,7 @@
 
             <a
                 href="intro.html"
+                id="home-button"
                 class="leaderboard-button">
                 Return to Home
             </a>
@@ -293,6 +294,17 @@
 
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycbzK6Ms0EAsJMfjKjIwOlm5g_ApmVDVEaGuFbOHThF4eKvBxEcfvvqzSgwm5VGPGOC5aAw/exec";
+
+        // Detect the previous weekly intro page
+        const homeButton = document.getElementById("home-button");
+
+        const previousPage = document.referrer;
+
+        if (previousPage.includes("/week02/")) {
+            homeButton.href = "week02/intro.html";
+        } else {
+            homeButton.href = "week01/intro.html";
+        }
 
         const leaderboardBody =
             document.getElementById("leaderboard-body");

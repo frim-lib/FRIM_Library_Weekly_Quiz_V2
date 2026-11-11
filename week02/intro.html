@@ -250,7 +250,7 @@
 
                 <p>
                     Answer interactive questions and test what
-                    you have learned about Malaysian plants.
+                    you have learned about Malaysian flora and fauna.
                 </p>
 
             </article>
@@ -299,7 +299,7 @@
             </a>
 
             <a
-                href="../leaderboard.html"
+                href="http://127.0.0.1:5500/leaderboard.html"
                 class="intro-button leaderboard-link">
                 🏆 VIEW LEADERBOARD
             </a>
@@ -329,54 +329,23 @@
 
     </main>
 
-
     <script>
-        // ========================================
-        // DYNAMIC WEEK SELECTION
-        // ========================================
 
-        const params = new URLSearchParams(
-            window.location.search
-        );
+// ========================================
+// WEEK 02 CONFIGURATION
+// ========================================
 
-        const requestedWeek = params.get("week") || "01";
+const weekLabel = document.getElementById("week-label");
+const startQuizButton = document.getElementById("start-quiz-button");
 
-        // Add a week here only after its quiz page is ready.
-        const availableWeeks = ["01", "02"];
+// Set week label
+weekLabel.textContent = "WEEK 02";
 
-        const weekLabel =
-            document.getElementById("week-label");
+// Set Week 02 quiz destination
+startQuizButton.href = "index.html";
 
-        const startQuizButton =
-            document.getElementById("start-quiz-button");
-
-        if (availableWeeks.includes(requestedWeek)) {
-
-            weekLabel.textContent =
-                `WEEK ${requestedWeek}`;
-
-            startQuizButton.href =
-                "index.html";
-
-            startQuizButton.classList.remove("disabled");
-
-            startQuizButton.setAttribute("aria-disabled", "false");
-
-        } else {
-
-            weekLabel.textContent =
-                `WEEK ${requestedWeek}`;
-
-            startQuizButton.textContent =
-                "QUIZ NOT AVAILABLE";
-
-            startQuizButton.removeAttribute("href");
-
-            startQuizButton.classList.add("disabled");
-
-            startQuizButton.setAttribute("aria-disabled", "true");
-
-        }
+startQuizButton.classList.remove("disabled");
+startQuizButton.setAttribute("aria-disabled", "false");
     </script>
 <script src="../js/button_sound.js"></script>
 </body>
