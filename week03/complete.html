@@ -59,8 +59,26 @@
                     type="text"
                     id="nickname"
                     maxlength="20"
-                    placeholder="Enter nickname"
-                    autocomplete="nickname"
+                    placeholder="Enter name"
+                    autocomplete="name"
+                >
+
+
+            <p class="email-notice"><br>
+                📧 Please provide a valid email address. Your email
+                will be used to identify participants and contact
+                prize winners regarding prize arrangements.
+            </p>
+
+            <label for="email">Enter your email address:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    maxlength="100"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                    required
                 >
 
                 <p id="submission-message" role="status"></p>
@@ -210,16 +228,26 @@
 
         const nicknameInput =
             document.getElementById("nickname");
+            
+        const emailInput =
+            document.getElementById("email");
 
         const message =
             document.getElementById("submission-message");
 
         submitButton.addEventListener("click", async () => {
             const nickname = nicknameInput.value.trim();
+            const email = emailInput.value.trim();
 
             if (!nickname || nickname.length > 20) {
                 message.textContent =
                     "Please enter a nickname (1–20 characters).";
+                return;
+            }
+
+            if (!email || !emailInput.checkValidity()) {
+                message.textContent =
+                    "Please enter a valid email address.";
                 return;
             }
 
@@ -249,6 +277,7 @@
                     body: JSON.stringify({
                         action: "submit",
                         nickname: nickname,
+                        email: email,
                         week: "WEEK_03",
                         answers: [
                             savedAnswers["1"],
