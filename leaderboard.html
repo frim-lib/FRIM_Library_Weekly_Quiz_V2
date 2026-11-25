@@ -237,6 +237,7 @@
                 <option value="WEEK_01">Week 01</option>
                 <option value="WEEK_02">Week 02</option>
                 <option value="WEEK_03">Week 03</option>
+                <option value="WEEK_04">Week 04</option>
             </select>
         </div>
 
@@ -300,7 +301,11 @@
 
         const previousPage = document.referrer;
 
-        if (previousPage.includes("/week02/")) {
+        if (previousPage.includes("/week04/")) {
+            homeButton.href = "week04/intro.html";
+        } else if (previousPage.includes("/week03/")) {
+            homeButton.href = "week03/intro.html";
+        } else if (previousPage.includes("/week02/")) {
             homeButton.href = "week02/intro.html";
         } else {
             homeButton.href = "week01/intro.html";

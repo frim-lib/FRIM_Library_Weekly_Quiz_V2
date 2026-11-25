@@ -1,0 +1,173 @@
+
+        .intro-container {
+            width: 90%;
+            max-width: 850px;
+            margin: 35px auto;
+            padding: 30px;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .intro-hero {
+            padding: 35px 20px;
+            border-radius: 16px;
+            background: #e3ebd1;
+        }
+
+        .intro-icon {
+            font-size: 55px;
+            margin-bottom: 12px;
+        }
+
+        .intro-hero h1 {
+            margin: 10px 0;
+            color: #344b2e;
+            font-size: clamp(25px, 5vw, 38px);
+        }
+
+        .intro-hero p {
+            margin: 12px 0;
+            line-height: 1.7;
+        }
+
+        .week-label {
+            display: inline-block;
+            padding: 7px 16px;
+            margin-bottom: 12px;
+            background: #819747;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .intro-description {
+            margin: 28px 0;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .intro-features {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .intro-feature {
+            padding: 20px 14px;
+            border-radius: 14px;
+            background: #eef3e6;
+        }
+
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .intro-feature h3 {
+            margin: 8px 0;
+            color: #344b2e;
+            font-size: 17px;
+        }
+
+        .intro-feature p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .quiz-info {
+            padding: 20px;
+            margin: 25px 0;
+            background: #f5f6ee;
+            border-radius: 14px;
+        }
+
+        .quiz-info p {
+            margin: 10px 0;
+        }
+
+        .intro-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 28px;
+        }
+
+        .intro-button {
+            display: inline-block;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #819747;
+            color: white;
+            text-decoration: none;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .intro-button:hover {
+            background: #6d803b;
+        }
+
+        .leaderboard-link {
+            background: #315d38;
+        }
+
+        .leaderboard-link:hover {
+            background: #24452b;
+        }
+
+        .intro-button.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .intro-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dce2d3;
+            color: #52604b;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 600px) {
+            .intro-container {
+                width: 94%;
+                margin: 18px auto;
+                padding: 16px;
+            }
+
+            .intro-hero {
+                padding: 25px 14px;
+            }
+
+            .intro-features {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .intro-feature {
+                padding: 18px;
+            }
+
+            .intro-description {
+                font-size: 16px;
+            }
+
+            .intro-actions {
+                flex-direction: column;
+            }
+
+            .intro-button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
